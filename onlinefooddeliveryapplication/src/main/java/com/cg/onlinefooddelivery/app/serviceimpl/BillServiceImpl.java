@@ -16,11 +16,6 @@ public class BillServiceImpl implements BillService {
 	@Autowired
 	private BillRepository billRepository;
 	
-
-	
-	
-	
-
 	@Override
 	public List<Bill> getAllBills() {
 		return  billRepository.findAll();
@@ -34,7 +29,7 @@ public class BillServiceImpl implements BillService {
 
 	@Override
 	public Bill saveorUpdate(Bill bill) {
-		// TODO Auto-generated method stub
+		
 		return billRepository.save(bill);
 	}
 
