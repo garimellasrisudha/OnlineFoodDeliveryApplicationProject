@@ -49,12 +49,17 @@ public class Item {
 	 */
 	
 	private double cost;
-	//ManyToMany Relationship with Restaurant Class
 	@ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="itemList")
 	@JsonIgnore
 	private List<Restaurant> restaurants;
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="foodcart_id")
+	//@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	//@JsonIgnore
+	//@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	//@JoinColumn(name = "foodcart_id")
+	//@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="foodcart_id")
+	@JsonIgnore
 	private FoodCart cart;
 	
 	public String getItemName() {

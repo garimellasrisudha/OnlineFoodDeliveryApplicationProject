@@ -54,7 +54,7 @@ public class ItemController {
 		return new ResponseEntity<Item>(item,HttpStatus.OK);
 	}
 	@GetMapping("/findAll")
-	public Iterable<Item> getAllItems()
+	public List<Item> getAllItems()
 	{
 		return itemService.getAllItems();
 	}

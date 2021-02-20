@@ -46,7 +46,7 @@ public class RestaurantController {
 		return new ResponseEntity<String>("Restaurant Deleted",HttpStatus.OK);
 	}
 	@GetMapping("/all")
-	public Iterable<Restaurant> getAllRestaurants()
+	public List<Restaurant> getAllRestaurants()
 	{
 		return restaurantService.getAllRestaurant();
 	}

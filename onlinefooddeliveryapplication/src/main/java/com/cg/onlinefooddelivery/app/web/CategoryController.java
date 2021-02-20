@@ -1,5 +1,7 @@
 package com.cg.onlinefooddelivery.app.web;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,7 @@ public class CategoryController {
 		return new ResponseEntity<String>("category deleted",HttpStatus.OK);
 	}
 	@GetMapping("/findAll")
-	public Iterable<Category> getAllCategories()
+	public List<Category> getAllCategories()
 	{
 		return categoryService.getAllCategory();
 	}

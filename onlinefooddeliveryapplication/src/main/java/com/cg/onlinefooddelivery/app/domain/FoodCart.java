@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -30,8 +31,14 @@ public class FoodCart {
 	private OrderDetail orderDetail;
 	//One to many relationship
 	
-	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="foodCart")
-	private List<Item> itemList=new ArrayList<>();
+	//@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	//@JoinColumn(name="item_idd")
+	//@JsonIgnore
+	//@JsonIgnore
+	//@OneToMany(mappedBy = "cart",
+		   // cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cart",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Item> itemList;
 
     @Column(unique=true,updatable=false)
     private String orderNo;
