@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.onlinefooddelivery.app.domain.FoodCart;
-import com.cg.onlinefooddelivery.app.exception.ItemNotFoundException;
 import com.cg.onlinefooddelivery.app.exception.ResourceNotFoundException;
 import com.cg.onlinefooddelivery.app.repository.FoodCartRepository;
 
@@ -26,7 +25,7 @@ public class FoodCartServiceImpl {
 	public FoodCart findById(int cartId) {
 		FoodCart cart=cartRepository.findById(cartId);
 		if(cart==null) {
-			throw new ItemNotFoundException("Cart doesn't exist");
+			throw new ResourceNotFoundException("Cart doesn't exist");
 		}
 		return cart;
 	}

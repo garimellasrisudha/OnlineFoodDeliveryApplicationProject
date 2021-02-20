@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.onlinefooddelivery.app.domain.OrderDetail;
-import com.cg.onlinefooddelivery.app.exception.OrderNotFoundException;
+import com.cg.onlinefooddelivery.app.service.OrderDetailService;
 import com.cg.onlinefooddelivery.app.serviceimpl.MapValidationServiceImpl;
-import com.cg.onlinefooddelivery.app.serviceimpl.OrderDetailServiceImpl;
+
 
 
 @RestController
@@ -25,35 +25,36 @@ import com.cg.onlinefooddelivery.app.serviceimpl.OrderDetailServiceImpl;
 public class OrderDetailController {
 	
 	@Autowired
-	private OrderDetailServiceImpl orderDetailServiceImpl;
+	private OrderDetailService orderDetailService;
 	
 	@Autowired
 	private MapValidationServiceImpl mapValidationServiceImpl;
 	
 	@PostMapping("")
-	public ResponseEntity<?> addOrderDetail(@Valid @RequestBody OrderDetail orderDetail, BindingResult result) throws OrderNotFoundException {
+	public ResponseEntity<?> addOrderDetail(@Valid @RequestBody OrderDetail orderDetail, BindingResult result)  {
 		ResponseEntity<?> errorMap=mapValidationServiceImpl.mapValidationError(result);
 		if(errorMap!=null) {
 			return errorMap;
 		}
-		OrderDetail order=orderDetailServiceImpl.SaveOrUpdate(orderDetail);
+		OrderDetail order=orderDetailService.SaveOrUpdate(orderDetail);
 		return new ResponseEntity<OrderDetail>(order,HttpStatus.OK);
 	}
 	
 	@GetMapping("/{orderId}")
-	public OrderDetail findOrderDetail(@PathVariable int id) throws OrderNotFoundException {
-		OrderDetail order= orderDetailServiceImpl.findById(id);
+	public OrderDetail findOrderDetail(@PathVariable int id)  {
+		OrderDetail order= orderDetailService.findById(id);
 		return order;
 		
 	}
 	
 	@GetMapping("/all")
 	public Iterable<OrderDetail> getAllOrders(){
-		return orderDetailServiceImpl.getAllOrderDetails(); 
+		return orderDetailService.getAllOrderDetails(); 
 	}
 	@DeleteMapping("/{id}")
-	public void deleteOrderDetail(@PathVariable int id) throws OrderNotFoundException {
-		orderDetailServiceImpl.deleteOrderDetailsById(id);
+	public void deleteOrderDetail(@PathVariable int id)  
+	{
+		orderDetailService.deleteOrderDetailsById(id);
 		
 	}
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.onlinefooddelivery.app.domain.FoodCart;
+import com.cg.onlinefooddelivery.app.service.MapValidationService;
 import com.cg.onlinefooddelivery.app.serviceimpl.FoodCartServiceImpl;
 import com.cg.onlinefooddelivery.app.serviceimpl.MapValidationServiceImpl;
 
@@ -22,14 +23,14 @@ import com.cg.onlinefooddelivery.app.serviceimpl.MapValidationServiceImpl;
 public class FoodCartController {
 
 	@Autowired
-	private MapValidationServiceImpl mapValidationServiceImpl;
+	private MapValidationService mapValidationService;
 	
 	@Autowired
 	private FoodCartServiceImpl cartServiceImpl;
 	
 	@PostMapping("")
 	public ResponseEntity<?> addToCart(@Valid @RequestBody FoodCart cart, BindingResult result) {
-		ResponseEntity<?> errorMap=mapValidationServiceImpl.mapValidationError(result);
+		ResponseEntity<?> errorMap=mapValidationService.mapValidationError(result);
 		if(errorMap!=null) {
 			return errorMap;
 		}
