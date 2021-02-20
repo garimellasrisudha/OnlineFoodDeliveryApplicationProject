@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -52,6 +53,9 @@ public class Item {
 	@ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="itemList")
 	@JsonIgnore
 	private List<Restaurant> restaurants;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="foodcart_id")
+	private FoodCart cart;
 	
 	public String getItemName() {
 		return itemName;
@@ -88,6 +92,12 @@ public class Item {
 	}
 	public void setRestaurants(List<Restaurant> restaurants) {
 		this.restaurants = restaurants;
+	}
+	public FoodCart getCart() {
+		return cart;
+	}
+	public void setCart(FoodCart cart) {
+		this.cart = cart;
 	}
 	
 	
