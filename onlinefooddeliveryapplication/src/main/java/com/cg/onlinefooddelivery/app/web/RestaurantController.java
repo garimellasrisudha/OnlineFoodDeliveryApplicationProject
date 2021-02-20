@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.onlinefooddelivery.app.domain.Restaurant;
-import com.cg.onlinefooddelivery.app.serviceImpl.MapValidationErrorService;
-import com.cg.onlinefooddelivery.app.serviceImpl.RestaurantServiceImpl;
+import com.cg.onlinefooddelivery.app.serviceimpl.MapValidationServiceImpl;
+import com.cg.onlinefooddelivery.app.serviceimpl.RestaurantServiceImpl;
 
 @RestController
 @RequestMapping("/api/restaurants")
@@ -26,7 +26,7 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantServiceImpl restaurantService;
 	@Autowired
-	private MapValidationErrorService mapValidationerrorService;
+	private MapValidationServiceImpl mapValidationerrorService;
 	@PostMapping("/add")
 	public ResponseEntity<?> createRestaurant(@Valid @RequestBody Restaurant restaurant,BindingResult result)
 	{

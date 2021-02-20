@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.onlinefooddelivery.app.domain.Item;
 import com.cg.onlinefooddelivery.app.service.ItemService;
-import com.cg.onlinefooddelivery.app.serviceImpl.MapValidationErrorService;
+//import com.cg.onlinefooddelivery.app.serviceImpl.MapValidationErrorService;
+import com.cg.onlinefooddelivery.app.serviceimpl.MapValidationServiceImpl;
 
 @RestController
 @RequestMapping("/api/items")
@@ -28,7 +29,7 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	@Autowired
-	private MapValidationErrorService  mapValidationErrorService;
+	private MapValidationServiceImpl  mapValidationErrorService;
 	@PostMapping("/add")
 	public ResponseEntity<?> createItem(@Valid @RequestBody Item item,BindingResult result)
 	{

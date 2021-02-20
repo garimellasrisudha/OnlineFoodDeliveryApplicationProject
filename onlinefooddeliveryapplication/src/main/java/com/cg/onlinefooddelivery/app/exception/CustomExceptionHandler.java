@@ -7,16 +7,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
 @ControllerAdvice
 @RestController
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler{
-	@ExceptionHandler
-	public ResponseEntity<?> handleRestaurantNotFoundException(Exception ex,WebRequest request)
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<?> handleRestaurantNotFoundException(ResourceNotFoundException ex,WebRequest request)
 	{
-		CustomerNotFoundExceptionResponse customerNotFoundException=new CustomerNotFoundExceptionResponse(ex.getMessage());
-		return new ResponseEntity<Object>(customerNotFoundException,HttpStatus.BAD_REQUEST);
+		ExceptionResponse restaurantNotFoundException=new ExceptionResponse(ex.getMessage());
+		return new ResponseEntity<Object>(restaurantNotFoundException,HttpStatus.BAD_REQUEST);
 	}
 	
-
 }

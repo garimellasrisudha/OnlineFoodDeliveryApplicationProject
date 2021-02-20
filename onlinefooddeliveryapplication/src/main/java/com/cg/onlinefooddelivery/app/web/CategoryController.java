@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.onlinefooddelivery.app.domain.Category;
 import com.cg.onlinefooddelivery.app.service.CategoryService;
-import com.cg.onlinefooddelivery.app.serviceImpl.MapValidationErrorService;
+import com.cg.onlinefooddelivery.app.serviceimpl.MapValidationServiceImpl;
 
 
 @RestController
@@ -25,7 +25,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	@Autowired
-	private MapValidationErrorService mapValidationErrorService;
+	private MapValidationServiceImpl mapValidationErrorService;
 	@PostMapping("")
 	public ResponseEntity<?> createNewProject(@Valid @RequestBody Category category, BindingResult result) {
 		ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationError(result);
