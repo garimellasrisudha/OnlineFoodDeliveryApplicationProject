@@ -1,9 +1,8 @@
 package com.cg.onlinefooddelivery.app.service;
 
-import java.util.Optional;
+import java.util.List;
 
 import com.cg.onlinefooddelivery.app.domain.Customer;
-import com.cg.onlinefooddelivery.app.exception.CustomerNotFoundException;
 
 public interface CustomerService {
 	
@@ -18,7 +17,7 @@ public interface CustomerService {
  * This method is for finding all  customer details
  * @return all customer details
  */
-	public Iterable<Customer> getAllCustomers() ;
+	public List<Customer> getAllCustomers() ;
 		
 	
 	/*

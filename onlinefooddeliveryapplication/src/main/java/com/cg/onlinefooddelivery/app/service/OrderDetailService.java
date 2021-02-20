@@ -1,7 +1,8 @@
 package com.cg.onlinefooddelivery.app.service;
 
+import java.util.List;
+
 import com.cg.onlinefooddelivery.app.domain.OrderDetail;
-import com.cg.onlinefooddelivery.app.exception.OrderNotFoundException;
 
 public interface OrderDetailService {
 	
@@ -11,24 +12,24 @@ public interface OrderDetailService {
 	 * @return saved order detail
 	 * @throws OrderNotFoundException 
 	 */
-	OrderDetail SaveOrUpdate(OrderDetail orderDetail) throws OrderNotFoundException;
+	OrderDetail SaveOrUpdate(OrderDetail orderDetail);
 	/**
 	 * this method is for finding all Order related Details
 	 * @return all order details
 	 */
-	Iterable<OrderDetail> getAllOrderDetails();
+	List<OrderDetail> getAllOrderDetails();
 	/**
 	 * this method is for finding order details by id
 	 * @param id
 	 * @return
 	 * @throws OrderNotFoundException 
 	 */
-	 OrderDetail findById(int id) throws OrderNotFoundException;
+	 OrderDetail findById(int id) ;
 	/**
 	 * this method is for deleting the order Details by id
 	 * @param id
 	 * @throws OrderNotFoundException 
 	 */
-	void deleteOrderDetailsById(int id) throws OrderNotFoundException;
+	void deleteOrderDetailsById(int id);
 
 }

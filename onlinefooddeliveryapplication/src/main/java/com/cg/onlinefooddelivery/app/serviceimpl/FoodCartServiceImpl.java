@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.onlinefooddelivery.app.domain.FoodCart;
 import com.cg.onlinefooddelivery.app.exception.ItemNotFoundException;
+import com.cg.onlinefooddelivery.app.exception.ResourceNotFoundException;
 import com.cg.onlinefooddelivery.app.repository.FoodCartRepository;
 
 @Service
@@ -18,7 +19,7 @@ public class FoodCartServiceImpl {
 		return cartRepository.save(cart);
 	}
 		catch(Exception e) {
-			throw new ItemNotFoundException("Cart Not Found");
+			throw new ResourceNotFoundException("Cart Not Found");
 		}
 	}
 	

@@ -2,12 +2,14 @@
 package com.cg.onlinefooddelivery.app.serviceimpl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.onlinefooddelivery.app.domain.Address;
 import com.cg.onlinefooddelivery.app.domain.Customer;
-import com.cg.onlinefooddelivery.app.exception.CustomerNotFoundException;
+import com.cg.onlinefooddelivery.app.exception.ResourceNotFoundException;
 import com.cg.onlinefooddelivery.app.repository.CustomerRepository;
 import com.cg.onlinefooddelivery.app.service.CustomerService;
 
@@ -46,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService{
  * This method is for finding all  customer details
  * @return all customer details
  */
-	public Iterable<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomers() {
 		return customerRepository.findAll();
 	}
 	
@@ -59,7 +61,7 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		Customer customer=customerRepository.findById(id);
 		if(customer==null) {
-			throw new CustomerNotFoundException("Invalid Customer");
+			throw new ResourceNotFoundException("Invalid Customer");
 		}
 		return customer;
 		
@@ -74,7 +76,7 @@ public class CustomerServiceImpl implements CustomerService{
 		{
 			Customer customer=customerRepository.findById(id);
 			if(customer==null) {
-				throw new CustomerNotFoundException("Invalid Customer");
+				throw new ResourceNotFoundException("Invalid Customer");
 			}
 			customerRepository.deleteById(id);
 		}
