@@ -15,5 +15,8 @@ public interface BillService {
 	public void deleteBill(int billId);
 
 	public Bill getBillById(int billId);
+	
+	public int calculateBill(int billId);
+	
 
 }

@@ -19,8 +19,6 @@ public class Bill {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
  private int id;
- private int totallitem;
- private double totalcost;
  @OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
  @JoinColumn(name="orderdetail_id")
  private OrderDetail order;
@@ -32,18 +30,6 @@ public int getId() {
 }
 public void setId(int id) {
 	this.id = id;
-}
-public int getTotallitem() {
-	return totallitem;
-}
-public void setTotallitem(int totallitem) {
-	this.totallitem = totallitem;
-}
-public double getTotalcost() {
-	return totalcost;
-}
-public void setTotalcost(double totalcost) {
-	this.totalcost = totalcost;
 }
 public Date getBillDate() {
 	return billDate;

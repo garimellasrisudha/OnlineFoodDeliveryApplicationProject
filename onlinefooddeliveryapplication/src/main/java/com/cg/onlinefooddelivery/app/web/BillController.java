@@ -54,9 +54,12 @@ public class BillController {
 	}
 	
 	@GetMapping("/getBill")
-	public ResponseEntity<Map<String, Object>> getBill(Integer billId) {
-		return null;
+	public int getBill(int billId) {
+		int totalCost=billService.calculateBill(billId);
+		return totalCost;
+		
 		
 	}
+	
 	
 }
